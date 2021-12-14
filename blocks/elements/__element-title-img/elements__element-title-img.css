@@ -12,3 +12,9 @@
   background-image: url(../../../images/heart_black.svg);
   opacity: 1;
 }
+
+@media all and (max-width: 1280px) {
+  .elements__element-title-img {
+    padding: 0 20px 0 20px;
+  }
+}

@@ -1,19 +1,20 @@
-.profile__name {
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 48px;
+.popup__heading {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  color: #fff;
+  color: #000;
   padding: 0;
-  margin: 0;
+  margin: 34px 0 0 0;
+  text-align: center;
 }
 
 @media all and (max-width: 1280px) {
-  .profile__name {
-    font-size: 27px;
-    line-height: 33px;
-   
+  .popup__heading {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 25px 0 0 0;
     text-align: center;
   }
 }

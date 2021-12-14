@@ -3,20 +3,16 @@
   width: 470px;
   height: 370px;
 
-  top: 50vh;
-  left: 50vw;
+  top: 50%;
+  left: calc(50%+470px / 2);
 
   padding: 0;
   margin: 0;
-  background: rgba(255, 255, 255, 0);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: none;
 }
 
 @media all and (max-width: 1280px) {
-  .profile {
+  .popup {
     width: 282px;
     height: 358px;
   }

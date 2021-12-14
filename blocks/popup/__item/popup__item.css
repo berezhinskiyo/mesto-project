@@ -1,19 +1,33 @@
-.profile__position {
-  font-size: 18px;
-  line-height: 22px;
+.popup__item {
+  border: 0;
+  width: 358px;
+  height: 27px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #bcbcc4;
+  background-color: transparent;
+  margin: 54px auto 0 auto;
   font-family: "Inter", sans-serif;
-  font-style: normal;
-  color: #fff;
-  padding: 0;
-  margin: 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+}
+.popup__item[id="heading"] {
+  margin: 54px auto 0 auto;
+}
+.popup__item[id="subheading"] {
+  margin: 30px auto 0 auto;
 }
 
 @media all and (max-width: 1280px) {
-  .profile__position {
+  .popup__item {
+    width: 238px;
+    height: 27px;
+
     font-size: 14px;
     line-height: 17px;
-    text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 3;
+  }
+  .popup__item[id="heading"] {
+    margin: 75px auto 0 auto;
   }
 }
