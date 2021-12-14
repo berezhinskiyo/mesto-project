@@ -1,0 +1,14 @@
+.elements__element-title-img {
+  width: 22px;
+  height: 19px;
+  padding: 0 30px 0 30px;
+  margin: 0;
+  background-image: url(../../../images/heart.svg);
+  background-repeat: no-repeat;
+  background-size: 22px 19px;
+}
+
+.elements__element-title-img:active {
+  background-image: url(../../../images/heart_black.svg);
+  opacity: 1;
+}

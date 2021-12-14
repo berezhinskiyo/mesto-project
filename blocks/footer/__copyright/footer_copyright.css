@@ -1,0 +1,15 @@
+.footer_copyright {
+  color: #545454;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: "Inter", sans-serif;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+@media all and (max-width: 1280px) {
+  .footer_copyright {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
