@@ -1,6 +1,5 @@
 .footer {
   width: 880px;
-  height: 18px;
   padding: 0;
   margin: 66px auto 60px auto;
   display: flex;
@@ -8,7 +7,12 @@
   align-items: flex-start;
 }
 
-@media all and (max-width: 1280px) {
+@media all and (max-width: 879px) {
+  .footer {
+    width: 581px;
+  }
+}
+@media all and (max-width: 590px) {
   .footer {
     width: 282px;
     margin: 48px auto 36px auto;

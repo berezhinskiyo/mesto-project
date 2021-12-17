@@ -1,11 +1,12 @@
 .popup__container {
   position: relative;
   width: 470px;
-  height: 370px;
+ 
 
+  margin: auto;
+  left: 0;
+  right: 0;
 
-  padding: 0;
-  margin: 0;
   background: rgba(255, 255, 255, 0);
 
   display: flex;
@@ -16,6 +17,6 @@
 @media all and (max-width: 1280px) {
   .popup__container {
     width: 282px;
-    height: 358px;
+
   }
 }

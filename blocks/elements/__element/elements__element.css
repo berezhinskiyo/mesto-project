@@ -1,6 +1,6 @@
 .elements__element {
-  width: 282px;
-  height: 361px;
+  width: 100%;
+  min-height: 100%;
   background: #ffffff;
   border-radius: 10px;
   display: flex;

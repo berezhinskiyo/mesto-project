@@ -1,20 +1,22 @@
 .elements__element-title-img {
-  width: 22px;
+  width: 29px;
   height: 19px;
-  padding: 0 30px 0 30px;
-  margin: 0;
+  margin: 0 20px 0 0;
+  padding: 0;
   background-image: url(../../../images/heart.svg);
   background-repeat: no-repeat;
   background-size: 22px 19px;
+
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: #fff;
 }
 
 .elements__element-title-img:active {
   background-image: url(../../../images/heart_black.svg);
   opacity: 1;
-}
-
-@media all and (max-width: 1280px) {
-  .elements__element-title-img {
-    padding: 0 20px 0 20px;
-  }
 }

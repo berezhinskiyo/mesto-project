@@ -1,19 +1,10 @@
 .popup {
-  position: absolute;
-  width: 470px;
-  height: 370px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 
-  top: 50%;
-  left: calc(50%+470px / 2);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 
-  padding: 0;
-  margin: 0;
   display: none;
-}
-
-@media all and (max-width: 1280px) {
-  .popup {
-    width: 282px;
-    height: 358px;
-  }
 }

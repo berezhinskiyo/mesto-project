@@ -2,16 +2,16 @@
   display: grid;
   grid-template-columns: repeat(2, max-content);
   grid-template-rows: repeat(2, max-content);
-  row-gap: 18px;
+  row-gap: 10px;
   column-gap: 16px;
   margin: 0 0 0 30px;
   padding: 0;
 }
 
-@media all and (max-width: 1280px) {
+@media all and (max-width: 879px) {
   .profile__info {
     margin: 26px 0 0 0;
-    row-gap: 14px;
+    row-gap: 8px;
     column-gap: 10px;
   }
 }

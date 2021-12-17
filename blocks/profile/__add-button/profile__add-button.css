@@ -5,7 +5,8 @@
   background-image: url(../../../images/plus.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 16px 16px;
+  background-size: 22px 22px;
+  background-color: transparent;
 
   border: 2px solid #ffffff;
   box-sizing: border-box;
@@ -13,13 +14,14 @@
 
   color: #fff;
   padding: 0;
-  margin: 0 0 0 244px;
+  margin: 0;
 }
 
-@media all and (max-width: 1280px) {
+@media all and (max-width: 879px) {
   .profile__add-button {
     width: 282px;
     height: 50px;
-    margin: 36px 0 0 0;
+    margin: 33px 0 0 0;
+    background-size: 16px 16px;
   }
 }

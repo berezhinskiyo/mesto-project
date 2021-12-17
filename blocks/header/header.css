@@ -7,8 +7,17 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  border-bottom: 1px;
+  border-bottom-color: rgba(84, 84, 84, 0.7);
+  border-bottom-style: solid;
 }
-@media all and (max-width: 1279px) {
+
+@media all and (max-width: 879px) {
+  .header {
+    width: 581px;
+  }
+}
+@media all and (max-width: 590px) {
   .header {
     width: 320px;
     min-height: 56px;

@@ -5,6 +5,7 @@
   justify-content: center;
   margin: auto;
   background-color: #000;
+  min-width: 320px;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
