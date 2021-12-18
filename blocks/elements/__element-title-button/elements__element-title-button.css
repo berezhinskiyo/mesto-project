@@ -1,4 +1,4 @@
-.elements__element-title-img {
+.elements__element-title-button {
   width: 29px;
   height: 19px;
   margin: 0 20px 0 0;
@@ -6,17 +6,9 @@
   background-image: url(../../../images/heart.svg);
   background-repeat: no-repeat;
   background-size: 22px 19px;
-
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  background-color: #fff;
 }
 
-.elements__element-title-img:active {
+.elements__element-title-button:active {
   background-image: url(../../../images/heart_black.svg);
   opacity: 1;
 }
