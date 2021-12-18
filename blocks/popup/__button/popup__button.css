@@ -9,7 +9,7 @@
 
   color: #fff;
   padding: 0;
-  margin: 43px auto 37px auto;
+  margin: 48px auto 37px auto;
   transition: opacity 1s ease-out;
   cursor: pointer;
 
@@ -20,7 +20,7 @@
   line-height: 22px;
 }
 
-@media all and (max-width: 1280px) {
+@media all and (max-width: 590px) {
   .popup__button {
     width: 238px;
     min-height: 46px;
