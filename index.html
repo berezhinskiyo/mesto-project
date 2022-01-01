@@ -13,16 +13,24 @@
     <div class="popup">
         <div class="popup__container">
             <button type="button" class="popup__close-button button"></button>
-            <h2 class="popup__heading">Редактировать профиль</h2>
+            <h2 class="popup__heading"></h2>
             <form class="popup__admin" name="popup-form">
-                <input class="popup__item " type="text" id="heading" name="heading" placeholder="Имя" required
-                    value="Жак-Ив Кусто" />
-                <input class="popup__item " type="text" id="subheading" name="subheading" placeholder="о себе" required
-                    value="Исследователь океана" />
-                <button type="button" class="popup__button button">Сохранить</button>
+                <input class="popup__item " type="text" id="heading" name="heading" placeholder="" required value="" />
+                <input class="popup__item " type="text" id="subheading" name="subheading" placeholder="" required
+                    value="" />
+                <button type="submit" class="popup__button button"></button>
             </form>
         </div>
     </div>
+
+    <div class="image-popup">
+        <div class="image-popup__container">
+            <button type="button" class="image-popup__close-button button"></button>
+            <img src='' class="image-popup__img" alt="">
+            <p class="image-popup__subtitle"></p>
+        </div>
+    </div>
+
     <div class="page">
         <header class="header">
             <img class="header__logo" src="images/logo.svg" alt="лого">
@@ -40,54 +48,15 @@
                 <button type="button" class="profile__add-button button"></button>
             </section>
             <section class="elements">
-                <div class="elements__element">
-                    <img class="elements__element-img" src="images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="elements__element-block">
-                        <h3 class="elements__element-title">Карачаевск</h3>
-                        <button type="button" class="elements__element-title-button button"> </button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__element-img" src="images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="elements__element-block">
-                        <h3 class="elements__element-title">Гора Эльбрус</h3>
-                        <button type="button" class="elements__element-title-button button"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__element-img" src="images/donbay.jpg" alt="Домбай">
-                    <div class="elements__element-block">
-                        <h3 class="elements__element-title">Домбай</h3>
-                        <button type="button" class="elements__element-title-button button"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__element-img" src="images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="elements__element-block">
-                        <h3 class="elements__element-title">Гора Эльбрус</h3>
-                        <button type="button" class="elements__element-title-button button"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__element-img" src="images/donbay.jpg" alt="Домбай">
-                    <div class="elements__element-block">
-                        <h3 class="elements__element-title">Домбай</h3>
-                        <button type="button" class="elements__element-title-button button"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__element-img" src="images/karachaevsk.jpg" alt="Карачаево-черкесия">
-                    <div class="elements__element-block">
-                        <h3 class="elements__element-title">Карачаево-черкесия</h3>
-                        <button type="button" class="elements__element-title-button button"></button>
-                    </div>
-                </div>
+
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
     </div>
+    <script src="./pages/script.js"></script>
+
 </body>
 
 </html>
