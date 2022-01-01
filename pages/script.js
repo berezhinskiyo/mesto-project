@@ -84,6 +84,7 @@ function initPopup(isAdd, p){
         p.querySelector('#heading').value = document.querySelector('.profile__name').textContent;
         p.querySelector('#subheading').value = document.querySelector('.profile__position').textContent;
     }
+
 }
 
 initialCards.forEach(element => insertElement(element));
@@ -91,6 +92,8 @@ initialCards.forEach(element => insertElement(element));
 
 popup.querySelector('.popup__close-button').addEventListener('click',function (){
     popup.classList.remove('popup_opened');
+   
+    
     if(popup.classList.contains('popup_edit')){
         popup.classList.remove('popup_edit');
     }
