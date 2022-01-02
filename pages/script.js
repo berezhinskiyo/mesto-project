@@ -1,5 +1,3 @@
-
-
 const initialCards = [
     {
         name: 'Архыз',
@@ -26,61 +24,51 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-let popup = document.querySelector('.popup');
-let imagePopup = document.querySelector('.image-popup');
+let addPopup = document.querySelector('.popup_type_add');
+let editPopup = document.querySelector('.popup_type_edit');
+let imagePopup = document.querySelector('.popup_type_image');
 let elements = document.querySelector('.elements');
+let template = document.querySelector('#element_template');
+let imagePopupImg = imagePopup.querySelector('.popup__img');
+let imagePopupSubtitle = imagePopup.querySelector('.popup__subtitle');
 
 function insertElement(element){
-    elements.insertAdjacentHTML('afterbegin',`
-            <div class="elements__element">
-                <img class="elements__element-img" src="${element.link}" alt="${element.name}">
-                <button type="button" class="elements__element-delete-button button"> </button>
-                <div class="elements__element-block">
-                    <h3 class="elements__element-title">${element.name}</h3>
-                    <button type="button" class="elements__element-title-button button"> </button>
-                </div>
-            </div>`);
-    elements.querySelector('.elements__element-title-button').addEventListener('click',function(evt){
+    let clone = template.content.cloneNode(true);
+    let img = clone.querySelector('.elements__element-img');
+    img.src = element.link;
+    img.alt = element.name;
+    clone.querySelector('.elements__element-title').textContent = element.name;
+
+    clone.querySelector('.elements__element-title-button').addEventListener('click',function(evt){
         evt.currentTarget.classList.toggle('elements__element-title-button_clicked');
     });
 
-    elements.querySelector('.elements__element-img').addEventListener('click',function(evt){
-        imagePopup.classList.add('image-popup_opened');
-        imagePopup.querySelector('.image-popup__img').src = evt.currentTarget.src;
-        imagePopup.querySelector('.image-popup__img').alt = evt.currentTarget.parentNode.querySelector('.elements__element-title').textContent;
-        imagePopup.querySelector('.image-popup__subtitle').textContent =  evt.currentTarget.parentNode.querySelector('.elements__element-title').textContent;
+    clone.querySelector('.elements__element-img').addEventListener('click',function(evt){
+        imagePopup.classList.add('popup_opened');
+        imagePopupImg.src = evt.currentTarget.src;
+        let elementTitle = evt.currentTarget.parentNode.querySelector('.elements__element-title').textContent;
+        imagePopupImg.alt = elementTitle;
+        imagePopupSubtitle.textContent = elementTitle;
         
     });
 
-    elements.querySelector('.elements__element-delete-button').addEventListener('click',function(evt){
+    clone.querySelector('.elements__element-delete-button').addEventListener('click',function(evt){
         elements.removeChild(evt.currentTarget.parentNode);
     });
-        
-}
-imagePopup.querySelector('.image-popup__close-button').addEventListener('click',function (){
-    imagePopup.classList.remove('image-popup_opened');
-});
 
-function initPopup(isAdd, p){
+    elements.insertBefore(clone, elements.firstChild);
+}
+
+function openPopup(p){
     p.classList.add('popup_opened');
     
-    if(isAdd)
+    if(p.classList.contains('popup_type_add'))
     {
-        p.classList.add('popup_add');
-        p.querySelector('.popup__heading').textContent = "Новое место";
-        p.querySelector('#heading').placeholder = "Название";
-        p.querySelector('#subheading').placeholder = "Ссылка на картинку";   
-        p.querySelector('.popup__button').textContent = "Создать" ;
         p.querySelector('#heading').value = '';
         p.querySelector('#subheading').value = '';
     }
-    else
+    else if(p.classList.contains('popup_type_edit'))
     {
-        p.classList.add('popup_edit');
-        p.querySelector('.popup__heading').textContent = "Редактировать профиль";
-        p.querySelector('#heading').placeholder = "Имя";
-        p.querySelector('#subheading').placeholder = "О себе";  
-        p.querySelector('.popup__button').textContent = "Сохранить" ;
         p.querySelector('#heading').value = document.querySelector('.profile__name').textContent;
         p.querySelector('#subheading').value = document.querySelector('.profile__position').textContent;
     }
@@ -90,43 +78,36 @@ function initPopup(isAdd, p){
 initialCards.forEach(element => insertElement(element));
 
 
-popup.querySelector('.popup__close-button').addEventListener('click',function (){
-    popup.classList.remove('popup_opened');
-   
-    
-    if(popup.classList.contains('popup_edit')){
-        popup.classList.remove('popup_edit');
-    }
-    if(popup.classList.contains('popup_add')){
-        popup.classList.remove('popup_add');
-    }
-});
+document.querySelectorAll('.popup__close-button').forEach(el => el.addEventListener('click',function (evt){
+    evt.currentTarget.parentNode.parentNode.classList.remove('popup_opened');
+}));
+
 document.querySelector('.profile__edit-button').addEventListener('click',function (){
-    initPopup(false,popup);
+    openPopup(editPopup);
 });
 
 document.querySelector('.profile__add-button').addEventListener('click',function (){
-    initPopup(true,popup);
+    openPopup(addPopup);
 });
 
-popup.querySelector('.popup__admin').addEventListener('submit',function (evt){
+document.querySelectorAll('.popup__admin').forEach(el => el.addEventListener('submit',function (evt){
     evt.preventDefault(); 
-    if(popup.classList.contains('popup_edit'))
+    let pp = evt.currentTarget.parentNode.parentNode;
+    if(pp.classList.contains('popup_type_edit'))
     {
-        document.querySelector('.profile__name').textContent = popup.querySelector('#heading').value;
-        document.querySelector('.profile__position').textContent = popup.querySelector('#subheading').value; 
-        popup.classList.remove('popup_edit');
+        document.querySelector('.profile__name').textContent = editPopup.querySelector('#heading').value;
+        document.querySelector('.profile__position').textContent = editPopup.querySelector('#subheading').value; 
     } 
-    else if(popup.classList.contains('popup_add'))
+    else if(pp.classList.contains('popup_type_add'))
     {
         insertElement({ 
-            name: popup.querySelector('#heading').value,
-            link: popup.querySelector('#subheading').value
+            name: addPopup.querySelector('#heading').value,
+            link: addPopup.querySelector('#subheading').value
           });
-        popup.classList.remove('popup_add');
+ 
     }
 
-    popup.classList.remove('popup_opened');
+    pp.classList.remove('popup_opened');
   
-});
+}));
 
