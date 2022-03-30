@@ -1,0 +1,9 @@
+.popup__admin {
+  margin: 0 0 0 36px;
+  padding: 0;
+}
+@media all and (max-width: 590px) {
+  .popup__admin {
+    margin-left: 22px;
+  }
+}
