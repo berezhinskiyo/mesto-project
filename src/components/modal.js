@@ -1,25 +1,36 @@
 import * as validate from './validate'
-export const addPopup = document.querySelector('.popup_type_add');
-export const addPopupHeading = addPopup.querySelector('#heading');
-export const addPopupSubheading = addPopup.querySelector('#subheading');
-export const addPopupForm = addPopup.querySelector('.popup__admin');
-export const addPopupButton = addPopup.querySelector('.popup__button');
+const addPopup = document.querySelector('.popup_type_add');
+const addPopupHeading = addPopup.querySelector('#heading');
+const addPopupSubheading = addPopup.querySelector('#subheading');
+const addPopupForm = addPopup.querySelector('.popup__admin');
+const addPopupButton = addPopup.querySelector('.popup__button');
 
-export const editPopup = document.querySelector('.popup_type_edit');
-export const editPopupHeading = editPopup.querySelector('#heading');
-export const editPopupSubheading = editPopup.querySelector('#subheading');
-export const editPopupForm = editPopup.querySelector('.popup__admin');
-export const editPopupButton = editPopup.querySelector('.popup__button');
+const editPopup = document.querySelector('.popup_type_edit');
+const editPopupHeading = editPopup.querySelector('#heading');
+const editPopupSubheading = editPopup.querySelector('#subheading');
+const editPopupForm = editPopup.querySelector('.popup__admin');
+const editPopupButton = editPopup.querySelector('.popup__button');
 
 export const imagePopup = document.querySelector('.popup_type_image');
 export const imagePopupImg = imagePopup.querySelector('.popup__img');
 export const imagePopupSubtitle = imagePopup.querySelector('.popup__subtitle');
 
+const escapeKeyDownHandler = (evt) => {
+    const popup = document.querySelector('.popup_opened');
+    if (evt.key === "Escape") {
+        closePopup(popup);
+    }
+}
+
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
+    popup.addEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
+    document.addEventListener('keydown', escapeKeyDownHandler);
 }
 export function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    popup.removeEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
+    document.removeEventListener('keydown', escapeKeyDownHandler);
 }
 
 
@@ -30,13 +41,7 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
     }));
     document.querySelectorAll('.popup').forEach(popup => {
         popup.addEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
-        document.addEventListener('keydown', (evt) => {
-
-            if (evt.key === "Escape" && popup.classList.contains('popup_opened')) {
-                console.log(evt);
-                closePopup(popup);
-            }
-        });
+        document.addEventListener('keydown', escapeKeyDownHandler);
     });
 
     document.querySelector('.profile__edit-button').addEventListener('click', function () {

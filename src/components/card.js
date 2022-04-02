@@ -60,7 +60,7 @@ function createCard(item) {
     });
 
     clone.querySelector('.elements__element-delete-button').addEventListener('click', function (evt) {
-        elements.removeChild(evt.currentTarget.parentNode);
+        elements.removeChild(evt.currentTarget.closest('.elements__element'));
     });
     return clone;
 }
@@ -75,7 +75,7 @@ function fillElements() {
     elements.prepend(documentFragment);
 }
 
-export function init() {
+export function initializeCards() {
     fillElements();
     modal.subscribePopupToEvents(createElement, profileName, profilePosition);
 }
