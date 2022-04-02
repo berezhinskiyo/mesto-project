@@ -1,4 +1,4 @@
-const config = {
+/*const config = {
     baseUrl: 'https://nomoreparties.co/v1/cohort-42',
     headers: {
         authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6',
@@ -15,4 +15,4 @@ export const getInitialCards = () => {
                 return res.json();
             }
         });
-} 
+} */
