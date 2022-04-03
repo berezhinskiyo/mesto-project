@@ -15,22 +15,28 @@ export const imagePopup = document.querySelector('.popup_type_image');
 export const imagePopupImg = imagePopup.querySelector('.popup__img');
 export const imagePopupSubtitle = imagePopup.querySelector('.popup__subtitle');
 
-const escapeKeyDownHandler = (evt) => {
-    const popup = document.querySelector('.popup_opened');
+const handleEscapeKey = (evt) => {
     if (evt.key === "Escape") {
-        closePopup(popup);
+        closePopup(document.querySelector('.popup_opened'));
+        console.log('handleEscapeKey');
+    }
+}
+const handleOverlayClick = (evt) => {
+    if (evt.target.classList.contains('popup')) {
+        closePopup(evt.target);
+        console.log('clickOverlay');
     }
 }
 
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
-    popup.addEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
-    document.addEventListener('keydown', escapeKeyDownHandler);
+    popup.addEventListener('click', handleOverlayClick);
+    document.addEventListener('keydown', handleEscapeKey);
 }
 export function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    popup.removeEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
-    document.removeEventListener('keydown', escapeKeyDownHandler);
+    popup.removeEventListener('click', handleOverlayClick);
+    document.removeEventListener('keydown', handleEscapeKey);
 }
 
 
@@ -39,11 +45,11 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
     document.querySelectorAll('.popup__close-button').forEach(el => el.addEventListener('click', function (evt) {
         closePopup(evt.currentTarget.closest('.popup'));
     }));
-    document.querySelectorAll('.popup').forEach(popup => {
-        popup.addEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
-        document.addEventListener('keydown', escapeKeyDownHandler);
-    });
-
+    /* document.querySelectorAll('.popup').forEach(popup => {
+         popup.addEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
+         document.addEventListener('keydown', handleEscapeKey);
+     });
+ */
     document.querySelector('.profile__edit-button').addEventListener('click', function () {
         openPopup(editPopup);
         validate.clear(editPopup, editPopupButton, true, validate.validationConfig);
