@@ -18,13 +18,11 @@ export const imagePopupSubtitle = imagePopup.querySelector('.popup__subtitle');
 const handleEscapeKey = (evt) => {
     if (evt.key === "Escape") {
         closePopup(document.querySelector('.popup_opened'));
-        console.log('handleEscapeKey');
     }
 }
 const handleOverlayClick = (evt) => {
     if (evt.target.classList.contains('popup')) {
         closePopup(evt.target);
-        console.log('clickOverlay');
     }
 }
 
@@ -45,11 +43,7 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
     document.querySelectorAll('.popup__close-button').forEach(el => el.addEventListener('click', function (evt) {
         closePopup(evt.currentTarget.closest('.popup'));
     }));
-    /* document.querySelectorAll('.popup').forEach(popup => {
-         popup.addEventListener('click', (evt) => { if (evt.target.classList.contains('popup')) closePopup(popup); });
-         document.addEventListener('keydown', handleEscapeKey);
-     });
- */
+
     document.querySelector('.profile__edit-button').addEventListener('click', function () {
         openPopup(editPopup);
         validate.clear(editPopup, editPopupButton, true, validate.validationConfig);
