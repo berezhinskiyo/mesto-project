@@ -80,6 +80,9 @@ function createElement(item) {
     })
         .then((data) => {
             elements.prepend(createCard(data));
+        })
+        .catch((err) => {
+            console.log(err);
         });
 }
 
