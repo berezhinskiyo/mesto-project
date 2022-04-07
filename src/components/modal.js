@@ -74,7 +74,7 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
 
     document.querySelector('.profile__avatar__overlay').addEventListener('click', function () {
         openPopup(avatarPopup);
-        validate.clear(avatarPopup, avatarPopupButton, true, validate.validationConfig);
+        validate.clear(avatarPopup, avatarPopupButton, false, validate.validationConfig);
         avatarPopupSubheading.value = '';
     });
 
