@@ -83,7 +83,7 @@ function createElement(item) {
         });
 }
 
-const initialize = () => {
+const loadData = () => {
     Promise.all([api.getProfile(), api.getInitialCards()])
         .then(([userData, cards]) => {
             profileName.textContent = userData.name;
@@ -101,7 +101,7 @@ const initialize = () => {
         });
 }
 
-export const initializeCards = () => {
-    initialize();
+export const initialize = () => {
+    loadData();
     modal.subscribePopupToEvents(createElement, profileName, profilePosition, profileAvatar);
 }
