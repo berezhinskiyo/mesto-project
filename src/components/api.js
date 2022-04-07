@@ -18,17 +18,14 @@ export const getInitialCards = () => {
     return fetch(`${config.baseUrl}/cards`, {
         headers: config.headers
     })
-        .then(onResponse)
-        .catch((err) => {
-            console.log(err); // выводим ошибку в консоль
-        });;
+        .then(onResponse);
 }
 
 export const getProfile = () => {
     return fetch(`${config.baseUrl}/users/me`, {
         headers: config.headers
     })
-        .then(onResponse)
+        .then(onResponse);
 }
 
 export const patchProfile = (data) => {
@@ -37,10 +34,7 @@ export const patchProfile = (data) => {
         headers: config.headers,
         body: JSON.stringify(data)
     })
-        .then(onResponse)
-        .catch((err) => {
-            console.log(err); // выводим ошибку в консоль
-        });
+        .then(onResponse);
 }
 
 export const postCard = (data) => {
@@ -49,20 +43,14 @@ export const postCard = (data) => {
         headers: config.headers,
         body: JSON.stringify(data)
     })
-        .then(onResponse)
-        .catch((err) => {
-            console.log(err); // выводим ошибку в консоль
-        });
+        .then(onResponse);
 }
 export const deleteCard = (id) => {
     return fetch(`${config.baseUrl}/cards/${id}`, {
         method: 'DELETE',
         headers: config.headers
     })
-        .then(onResponse)
-        .catch((err) => {
-            console.log(err); // выводим ошибку в консоль
-        });
+        .then(onResponse);
 }
 
 export const deleteLike = (id) => {
@@ -70,10 +58,7 @@ export const deleteLike = (id) => {
         method: 'DELETE',
         headers: config.headers
     })
-        .then(onResponse)
-        .catch((err) => {
-            console.log(err); // выводим ошибку в консоль
-        });
+        .then(onResponse);
 }
 
 
@@ -82,21 +67,15 @@ export const putLike = (id) => {
         method: 'PUT',
         headers: config.headers
     })
-        .then(onResponse)
-        .catch((err) => {
-            console.log(err); // выводим ошибку в консоль
-        });
+        .then(onResponse);
 }
 
 export const patchAvatar = (url) => {
-    return fetch(`${config.baseUrl}/users/me    /avatar`, {
+    return fetch(`${config.baseUrl}/users/me/avatar`, {
         method: 'PATCH',
         headers: config.headers,
         body: JSON.stringify({ avatar: url })
 
     })
-        .then(onResponse)
-        .catch((err) => {
-            console.log(err); // выводим ошибку в консоль
-        });
+        .then(onResponse);
 }

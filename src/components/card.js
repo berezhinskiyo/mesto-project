@@ -15,7 +15,7 @@ const setLikes = (cardJSON, likes, evt) => {
 }
 
 const getCardId = (el) => {
-    return el.closest('.elements__element').querySelector('.elements__element-img').id.replace('_','');
+    return el.closest('.elements__element').querySelector('.elements__element-img').id.replace('_', '');
 }
 
 function createCard(data) {
@@ -32,10 +32,16 @@ function createCard(data) {
         function (evt) {
             if (evt.target.classList.contains('elements__element-block__likes__button_clicked'))
                 api.deleteLike(getCardId(evt.target))
-                    .then((cardJSON) => setLikes(cardJSON, likes, evt));
+                    .then((cardJSON) => setLikes(cardJSON, likes, evt))
+                    .catch((err) => {
+                        console.log(err);
+                    });
             else
                 api.putLike(getCardId(evt.target))
-                    .then((cardJSON) => setLikes(cardJSON, likes, evt));
+                    .then((cardJSON) => setLikes(cardJSON, likes, evt))
+                    .catch((err) => {
+                        console.log(err);
+                    });
         });
 
     img.addEventListener('click', function (evt) {
@@ -68,7 +74,7 @@ function createCard(data) {
 
 function createElement(item) {
 
-    api.postCard({
+    return api.postCard({
         name: item.name,
         link: item.link
     })
@@ -77,25 +83,25 @@ function createElement(item) {
         });
 }
 
-function fillElements() {
-    api.getInitialCards().then((initialCards) => {
-        const documentFragment = document.createDocumentFragment();
-        initialCards.forEach(item => documentFragment.append(createCard(item)));
-        elements.prepend(documentFragment);
-    })
+const initialize = () => {
+    Promise.all([api.getProfile(), api.getInitialCards()])
+        .then(([userData, cards]) => {
+            profileName.textContent = userData.name;
+            profilePosition.textContent = userData.about;
+            profileAvatar.src = userData.avatar;
+            profileName.id = userData._id;
 
-}
-export const initializeTitle = () => {
-    api.getProfile().then((item) => {
-        profileName.textContent = item.name;
-        profilePosition.textContent = item.about;
-        profileAvatar.src = item.avatar;
-        profileName.id = item._id;
-    });
+            const documentFragment = document.createDocumentFragment();
+            cards.forEach(item => documentFragment.append(createCard(item)));
+            elements.prepend(documentFragment);
 
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 export const initializeCards = () => {
-    fillElements();
-    modal.subscribePopupToEvents(createElement, profileName, profilePosition,profileAvatar);
+    initialize();
+    modal.subscribePopupToEvents(createElement, profileName, profilePosition, profileAvatar);
 }

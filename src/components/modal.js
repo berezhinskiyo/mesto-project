@@ -91,9 +91,14 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
         createElementCallBack({
             name: addPopupHeading.value,
             link: addPopupSubheading.value
-        });
-        closePopup(addPopup);
-        utils.removeDotesFromButtonName(addPopupButton);    
+        })
+            .then(() => closePopup(addPopup))
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => utils.removeDotesFromButtonName(addPopupButton))
+
+
     });
 
     editPopupForm.addEventListener('submit', function (evt) {
@@ -106,8 +111,12 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
             .then((data) => {
                 profileName.textContent = data.name;
                 profilePosition.textContent = data.about;
-            }).finally(() => {
                 closePopup(editPopup);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
                 utils.removeDotesFromButtonName(editPopupButton);
             });
 
@@ -120,9 +129,12 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
         api.patchAvatar(avatarPopupSubheading.value)
             .then((data) => {
                 profileAvatar.src = avatarPopupSubheading.value;
+                closePopup(avatarPopup);
+            })
+            .catch((err) => {
+                console.log(err);
             })
             .finally(() => {
-                closePopup(avatarPopup);
                 utils.removeDotesFromButtonName(avatarPopupButton);
             });
     });
@@ -134,8 +146,12 @@ export function subscribePopupToEvents(createElementCallBack, profileName, profi
         api.deleteCard(getCardId(evt.target))
             .then(() => {
                 elements.removeChild(elements.querySelector(`#_${getCardId(evt.target)}`).closest('.elements__element'));
-            }).finally(() => {
                 closePopup(confirmPopup);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
                 utils.removeDotesFromButtonName(confirmPopupButton);
             });
     });
