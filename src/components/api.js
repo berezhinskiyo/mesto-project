@@ -1,18 +1,102 @@
-/*const config = {
-    baseUrl: 'https://nomoreparties.co/v1/cohort-42',
+const config = {
+    baseUrl: 'https://nomoreparties.co/v1/plus-cohort-8',
     headers: {
-        authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6',
+        authorization: '552dddcc-f5af-491e-a2cf-a5b49ccd4099',
         'Content-Type': 'application/json'
     }
 }
 
+const onResponse = (res) => {
+    return res.ok ? res.json() : Promise.reject(res)
+}
+
+export const getMyId = () => {
+    //console.log(config.headers.authorization.replace('-', ''));
+    return config.headers.authorization.replace(/-/g, '');
+}
 export const getInitialCards = () => {
     return fetch(`${config.baseUrl}/cards`, {
-        config.headers
+        headers: config.headers
     })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
+        .then(onResponse)
+        .catch((err) => {
+            console.log(err); // выводим ошибку в консоль
+        });;
+}
+
+export const getProfile = () => {
+    return fetch(`${config.baseUrl}/users/me`, {
+        headers: config.headers
+    })
+        .then(onResponse)
+}
+
+export const patchProfile = (data) => {
+    return fetch(`${config.baseUrl}/users/me`, {
+        method: 'PATCH',
+        headers: config.headers,
+        body: JSON.stringify(data)
+    })
+        .then(onResponse)
+        .catch((err) => {
+            console.log(err); // выводим ошибку в консоль
         });
-} */
+}
+
+export const postCard = (data) => {
+    return fetch(`${config.baseUrl}/cards`, {
+        method: 'POST',
+        headers: config.headers,
+        body: JSON.stringify(data)
+    })
+        .then(onResponse)
+        .catch((err) => {
+            console.log(err); // выводим ошибку в консоль
+        });
+}
+export const deleteCard = (id) => {
+    return fetch(`${config.baseUrl}/cards/${id}`, {
+        method: 'DELETE',
+        headers: config.headers
+    })
+        .then(onResponse)
+        .catch((err) => {
+            console.log(err); // выводим ошибку в консоль
+        });
+}
+
+export const deleteLike = (id) => {
+    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+        method: 'DELETE',
+        headers: config.headers
+    })
+        .then(onResponse)
+        .catch((err) => {
+            console.log(err); // выводим ошибку в консоль
+        });
+}
+
+
+export const putLike = (id) => {
+    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+        method: 'PUT',
+        headers: config.headers
+    })
+        .then(onResponse)
+        .catch((err) => {
+            console.log(err); // выводим ошибку в консоль
+        });
+}
+
+export const patchAvatar = (url) => {
+    return fetch(`${config.baseUrl}/users/me    /avatar`, {
+        method: 'PATCH',
+        headers: config.headers,
+        body: JSON.stringify({ avatar: url })
+
+    })
+        .then(onResponse)
+        .catch((err) => {
+            console.log(err); // выводим ошибку в консоль
+        });
+}

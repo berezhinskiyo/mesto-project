@@ -1,0 +1,7 @@
+.elements__element-block__likes {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 22px;
+  margin: auto 20px;
+}
